@@ -23,6 +23,15 @@ data Personaje = UnPersonaje {
 type Universo = [Personaje]
 
 
+personajePrueba = UnPersonaje {
+    edad = 20,
+    energia = 60,
+    habilidades = ["Matematica","Integrales","Derivadas"],
+    nombre = "Ignacio",
+    planeta = "Tierra"
+}
+
+
 guanteleteCompleto :: Guantelete -> Bool
 guanteleteCompleto guantelete = ((==6).length.gemas) guantelete && material guantelete == "uru"
 
@@ -32,3 +41,11 @@ chasquear guantelete universo | guanteleteCompleto guantelete = reducirMitad uni
 
 reducirMitad :: Universo -> Universo
 reducirMitad universo = take (length universo `div` 2) universo
+
+-- Punto 2)
+
+aptoParaPendex :: Universo -> Bool
+aptoParaPendex = any ((<45).edad)
+
+energiaTotal :: Universo -> Float
+energiaTotal = sum. map energia
